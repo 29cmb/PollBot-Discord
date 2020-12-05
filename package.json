@@ -1,0 +1,15 @@
+{
+  "name": "poll_bot",
+  "version": "1.0.0",
+  "description": "Poll Bot",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "29cmb",
+  "license": "ISC",
+  "dependencies": {
+    "discord": "^0.8.2",
+    "quick.db": "^7.1.3"
+  }
+}
