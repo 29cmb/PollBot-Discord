@@ -1,10 +1,10 @@
 const Discord = require('discord.js');
 const bot = new Discord.Client();
-const TOKEN = 'NzUzNjYzNjk5MzAyMjE5ODQ5.X1peBA.aZkwqO4agEEqdIdqDCYrzgbw_KQ';
-const PREFIX = ':';
+const TOKEN = 'NzUzNjYzNjk5MzAyMjE5ODQ5.X1peBA.P1sPbS8_4zfLlkQevj-PhCflBXU';
+const PREFIX = '+';
 const activities_list = [
-  ':usage',
-  ':usage'
+  '+usage',
+  '+usage'
   ]; // creates an arraylist containing phrases you want your bot to switch through.
 
 bot.on('ready', () => {
