@@ -1,6 +1,5 @@
 const Discord = require('discord.js');
 const bot = new Discord.Client();
-const TOKEN = 'NzUzNjYzNjk5MzAyMjE5ODQ5.X1peBA.P1sPbS8_4zfLlkQevj-PhCflBXU';
 const PREFIX = '+';
 const activities_list = [
   '+usage',
@@ -90,4 +89,4 @@ bot.on('message', message => {
 
 
 
-bot.login(TOKEN)
+bot.login(process.env.BOT_TOKEN)
