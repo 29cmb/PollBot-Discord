@@ -87,6 +87,6 @@ bot.on('message', message => {
 
 })
 
-
+require('dotenv').config()
 
 bot.login(process.env.BOT_TOKEN)
