@@ -60,7 +60,7 @@ bot.on('message', message => {
   switch (args[0]){
 
     case 'usage':
-      message.channel.send('Usage: !poll <poll name>\n As you are reading this, the bot should be generating the required role, if it has not been created already.')
+      message.channel.send('Usage: +poll <poll name>\n As you are reading this, the bot should be generating the required role, if it has not been created already.')
     break;
 
   }
