@@ -89,4 +89,62 @@ bot.on('message', message => {
 
 require('dotenv').config()
 
+const { GiveawaysManager } = require('discord-giveaways');
+bot.giveawaysManager = new GiveawaysManager(bot, {
+    storage: "./giveaways.json",
+    updateCountdownEvery: 5000,
+    default: {
+        botsCanWin: false,
+        embedColor: "RANDOM",
+        reaction: "🎉"
+    }
+});
+// We now have a client.giveawaysManager property to manage our giveaways!
+
+bot.giveawaysManager.on("giveawayReactionAdded", (giveaway, member, reaction) => {
+    console.log(`${member.user.tag} entered giveaway #${giveaway.messageID} (${reaction.emoji.name})`);
+});
+
+bot.giveawaysManager.on("giveawayReactionRemoved", (giveaway, member, reaction) => {
+    console.log(`${member.user.tag} unreact to giveaway #${giveaway.messageID} (${reaction.emoji.name})`);
+});
+
+
+
+bot.commands = new Discord.Collection();
+
+/* Load all commands */
+fs.readdir("./commands/", (_err, files) => {
+    files.forEach((file) => {
+        if (!file.endsWith(".js")) return;
+        let props = require(`./commands/${file}`);
+        let commandName = file.split(".")[0];
+        bot.commands.set(commandName, props);
+        console.log(`👌 Command loaded: ${commandName}`);
+    });
+});
+
+bot.on('message', message => {
+   // Ignore all bots
+    if (message.author.bot) return;
+  
+    // Ignore messages not starting with the prefix (in config.json)
+    if (message.content.indexOf(PREFIX) !== 0) return;
+  
+    // Our standard argument/command name definition.
+    const args = message.content.slice(PREFIX.length).trim().split(/ +/g);
+    const command = args.shift().toLowerCase();
+  
+    // Grab the command data from the client.commands Enmap
+    const cmd = bot.commands.get(command);
+  
+    // If that command doesn't exist, silently exit and do nothing
+    if (!cmd) return;
+  
+    // Run the command
+    cmd.run(client, message, args);
+})
+
+
+
 bot.login(process.env.BOT_TOKEN)
