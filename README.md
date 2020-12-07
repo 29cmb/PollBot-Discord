@@ -14,3 +14,5 @@ BOT_TOKEN=
 After the equal sign, Put your bots token, Then it should look like this
 
 BOT_TOKEN=Your bots token
+
+
