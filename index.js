@@ -1,5 +1,5 @@
 const Discord = require('discord.js');
-const client = new Discord.Client();
+const bot = Discord.Client();
 const PREFIX = `+` 
 const fs = require('fs');
 
@@ -9,7 +9,7 @@ const activities_list = [
 ]; // creates an arraylist containing phrases you want your bot to switch through.
 
 
-client.on('ready', () => {
+bot.on('ready', () => {
   console.log('Poll Bot Online')
 
   setInterval(() => {
@@ -122,6 +122,8 @@ bot.on('guildCreate', guild => {
 
 
 require('dotenv').config()
+
+bot.config = require('./giveaway-settings')
 
 const { GiveawaysManager } = require('discord-giveaways');
 bot.giveawaysManager = new GiveawaysManager(bot, {
