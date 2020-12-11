@@ -123,7 +123,7 @@ bot.on('guildCreate', guild => {
 
 require('dotenv').config()
 
-bot.config = require('./giveaway-settings')
+bot.config = require('./giveaway-settings.json')
 
 const { GiveawaysManager } = require('discord-giveaways');
 bot.giveawaysManager = new GiveawaysManager(bot, {
