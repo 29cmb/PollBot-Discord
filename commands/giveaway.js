@@ -1,6 +1,6 @@
 const ms = require('ms');
 
-exports.run = async (client, message, args) => {
+exports.run = async (bot, message, args) => {
 
     // If the member doesn't have enough permissions
    if(!message.member.hasPermission('MANAGE_MESSAGES')){
@@ -36,7 +36,7 @@ exports.run = async (client, message, args) => {
     }
 
     // Start the giveaway
-    client.giveawaysManager.start(giveawayChannel, {
+    bot.giveawaysManager.start(giveawayChannel, {
         // The giveaway duration
         time: ms(giveawayDuration),
         // The giveaway prize
@@ -44,7 +44,7 @@ exports.run = async (client, message, args) => {
         // The giveaway winner count
         winnerCount: giveawayNumberWinners,
         // Who hosts this giveaway
-        hostedBy: client.config.hostedBy ? message.author : null,
+        hostedBy: bot.config.hostedBy ? message.author : null,
         // Messages
         messages: {
             giveaway: "Giveaway Time!!!",
