@@ -1,5 +1,5 @@
 const Discord = require('discord.js');
-const bot = Discord.Client();
+const bot = new Discord.Client();
 const PREFIX = `+` 
 const fs = require('fs');
 
@@ -54,7 +54,7 @@ bot.on(`message`, message => {
           console.log(`${e}, The error was in the guild ${message.guild.name}`)
           message.channel.send(`There was a error, try doing the following\n\n**1. If the \`Poll Perms\` Role does not exist, Please create it**\n**2. Make sure the bot has the permission \`Embed Links\` and \`Attach Files\`**\n\nIf none of these work, join our server **https://discord.gg/2fdPuaFf4s** and then put this message in the bugs channel\n\n\`${e}\``)
         }
-      }
+      
       break
 
   }
@@ -93,7 +93,7 @@ bot.on(`message`, message => {
   if (message.content == PREFIX + 'help') {
     var Embed = new Discord.MessageEmbed()
       .setTitle(`Command List`)
-      .setDescription(`+usage  -  Views the bot's poll usage\n+giveaway <time> #channel <prize>  -  Creates a giveaway\n+card - Views the bots status card`)
+      .setDescription(`+usage  -  Views the bot's poll usage\n+giveaway #channel <time> <number of winners> <prize>  -  Creates a giveaway\n+card - Views the bots status card`)
     message.channel.send(Embed)
   }
 })
@@ -177,7 +177,7 @@ bot.on('message', message => {
     if (!cmd) return;
   
     // Run the command
-    cmd.run(client, message, args);
+    cmd.run(bot, message, args);
 })
 
 
